@@ -13,6 +13,13 @@ namespace MVC_Simple_Calculator.Models.Service
             this.B_number = second_number;
             return A_number + B_number;
         }
+        public Addition(double first, double last)
+        {
+            this.A_number = first;
+            this.B_number = last;
+        }
+        public Addition()
+        { }
         
     }
 }

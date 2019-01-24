@@ -17,7 +17,7 @@ namespace MVC_Simple_Calculator.Models.Service
             {
                 return A_number / B_number;
             }
-            catch (DivideByZeroException dbv)
+            catch (DivideByZeroException)
             {
                 throw new DivideByZeroException("Нельзя делить на ноль");
             }

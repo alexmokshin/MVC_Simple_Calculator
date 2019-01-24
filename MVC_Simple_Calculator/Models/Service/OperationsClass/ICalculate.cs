@@ -11,5 +11,6 @@ namespace MVC_Simple_Calculator.Models.Service
         T A_number { get; set; }
         T B_number { get; set; }
         T Result(T first_number, T last_number);
+        
     }
 }

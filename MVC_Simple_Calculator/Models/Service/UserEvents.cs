@@ -15,6 +15,8 @@ namespace MVC_Simple_Calculator.Models.Service
             this.Operation = operation;
             this.DateTimeOperation = operation_time;
         }
+        public UserEvents()
+        { }
 
     }
 }
