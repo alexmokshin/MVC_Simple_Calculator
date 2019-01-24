@@ -7,7 +7,7 @@ namespace MVC_Simple_Calculator.Models.Service
     {
         public User User { get; set; }
         public ICalculate<double> Operation { get; set; }
-        public DateTime DateTimeOperation { get; set; }
+        public DateTime DateTimeOperation { get { return DateTime.Now; } set { } }
 
         public UserEvents(User user, ICalculate<double> operation, DateTime operation_time)
         {

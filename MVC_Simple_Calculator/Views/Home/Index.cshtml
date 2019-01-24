@@ -2,3 +2,16 @@
     ViewBag.Title = "Home Page";
 }
 
+<h2>@ViewBag.UserIp</h2>
+
+<div>
+    @using (Ajax.BeginForm("ResultCalculateOperation", new AjaxOptions { HttpMethod = "post", UpdateTargetId = "results" }))
+    {
+        <input type="text" name="operation" />
+        <input type="text" name="first" />
+        <input type="text" name="last" />
+        <output id ="results" type="text"  />
+        <input type="submit" value="Рассчитать" />
+    }
+</div>
+<div id="getresults"></div>

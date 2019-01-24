@@ -5,7 +5,7 @@ namespace MVC_Simple_Calculator.Models.Service.UserClass
 {
     public class User
     {
-        public string UserIp { get; set; }
+        public string UserIp { get { return GetUserIPAddress(); } set { } }
 
         public User()
         {
