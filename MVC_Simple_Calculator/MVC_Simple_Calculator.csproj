@@ -130,6 +130,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Service\OperationsClass\Division.cs" />
+    <Compile Include="Models\Service\OperationsClass\ICalculate.cs" />
+    <Compile Include="Models\Service\OperationsClass\Addition.cs" />
+    <Compile Include="Models\Service\OperationsClass\Multiplication.cs" />
+    <Compile Include="Models\Service\OperationsClass\Subtraction.cs" />
+    <Compile Include="Models\Service\UserClass\User.cs" />
+    <Compile Include="Models\Service\UserEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,7 +179,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\DatabaseLayer\" />
-    <Folder Include="Models\Service\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
