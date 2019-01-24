@@ -1,17 +1,43 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+@model IEnumerable<MVC_Simple_Calculator.Models.Service.UserEvents>
 <h2>@ViewBag.UserIp</h2>
 
 <div>
-    @using (Ajax.BeginForm("ResultCalculateOperation", new AjaxOptions { HttpMethod = "post", UpdateTargetId = "results" }))
+    @using (Ajax.BeginForm("ResultCalculateOperation", new AjaxOptions { HttpMethod = "post", OnSuccess = "OnSuccess", OnFailure = "Fail" }))
     {
-        <input type="text" name="operation" />
+       
+        <input type="text" name="operation" value="Что-то"/>
         <input type="text" name="first" />
         <input type="text" name="last" />
-        <output id ="results" type="text"  />
+        <input type="text" id="result">
         <input type="submit" value="Рассчитать" />
     }
 </div>
-<div id="getresults"></div>
+<h2>@ViewBag.Error</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(Model => Model.User.UserIp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.Operation.A_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.Operation.B_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.DateTimeOperation)
+        </th>
+    </tr>
+</table>
+<script type="text/javascript">
+    function OnSuccess(result) {
+        console.log("this result is " + result)
+        document.getElementById("result").value = result
+    }
+    function Fail(request, error) {
+        console.log("this result is " + error)
+    }
+</script>

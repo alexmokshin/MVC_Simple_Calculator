@@ -17,6 +17,12 @@ namespace MVC_Simple_Calculator.Models.Service
         }
         public UserEvents()
         { }
+        public UserEvents(ICalculate<double> calculate)
+        {
+            this.User = new User();
+            this.DateTimeOperation = DateTime.Now;
+            this.Operation = calculate;
+        }
 
     }
 }
