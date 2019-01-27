@@ -1,13 +1,16 @@
 ﻿using System;
+using System.ComponentModel;
 using MVC_Simple_Calculator.Models.Service.UserClass;
 
 namespace MVC_Simple_Calculator.Models.Service
 {
     public class UserEvents
     {
+        public int ID { get; set; }
         public User User { get; set; }
         public ICalculate<double> Operation { get; set; }
-        public DateTime DateTimeOperation { get { return DateTime.Now; } set { } }
+        [DisplayName("Дата/время операции")]
+        public DateTime DateTimeOperation { get; set; }
 
         public UserEvents(User user, ICalculate<double> operation, DateTime operation_time)
         {
@@ -19,6 +22,8 @@ namespace MVC_Simple_Calculator.Models.Service
         { }
         public UserEvents(ICalculate<double> calculate)
         {
+            var t = new Random();
+            this.ID = t.Next(100000);
             this.User = new User();
             this.DateTimeOperation = DateTime.Now;
             this.Operation = calculate;

@@ -1,10 +1,12 @@
 ﻿
+using System.ComponentModel;
 using System.Web;
 
 namespace MVC_Simple_Calculator.Models.Service.UserClass
 {
     public class User
     {
+        [DisplayName("IP пользователя")]
         public string UserIp { get { return GetUserIPAddress(); } set { } }
 
         public User()

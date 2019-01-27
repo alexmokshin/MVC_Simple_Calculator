@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MVC_Simple_Calculator.Controllers;
 
 namespace MVC_Simple_Calculator.Models.Service.Tests
 {
@@ -14,9 +15,13 @@ namespace MVC_Simple_Calculator.Models.Service.Tests
         [TestMethod()]
         public void ResultTest_divide_class()
         {
-            Division dv = new Division();
+            /*Division dv = new Division();
             Console.WriteLine(dv.Result(7, 0));
-            Console.WriteLine(dv.Result(0.22251546879848654521354987984561568789, 7));
+            Console.WriteLine(dv.Result(0.22251546879848654521354987984561568789, 7));*/
+            HomeController controller = new HomeController();
+            object c = controller.ResultCalculateOperation("+", 36, 18);
+            Assert.AreEqual(54, (double)c);
+            
             
         }
     }

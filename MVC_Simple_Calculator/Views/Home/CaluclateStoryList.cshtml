@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MVC_Simple_Calculator.Models.Service.UserEvents>
+
+<div id="calculate_results">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserIp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operation.Operation_symbol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operation.A_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operation.B_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operation.Result)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTimeOperation)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserIp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operation.Operation_symbol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operation.A_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operation.B_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operation.Result)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeOperation)
+            </td>
+            <td>
+                @Ajax.ActionLink("Retry","RetryCalculation", new {rowId = item.ID }, new AjaxOptions { HttpMethod = "post", OnSuccess = "FillFiledFromRow" })
+                
+            </td>
+        </tr>
+        }
+    </table>
+</div>
+<script type="text/javascript">
+    function FillFiledFromRow(result) {
+        var t = JSON.stringify(result)
+        var obj = JSON.parse(t)
+        console.log(obj.UserIp)
+        document.getElementById("operation_id").value = obj.Operation_symbol
+        document.getElementById("first_value").value = obj.A_number
+        document.getElementById("second_value").value = obj.B_number
+        document.getElementById("result").value = obj.Result
+    }
+    function Fail(request, error) {
+        console.log("this result is " + error)
+    }
+</script>

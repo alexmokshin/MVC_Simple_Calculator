@@ -1,28 +1,66 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-@model IEnumerable<MVC_Simple_Calculator.Models.Service.UserEvents>
-<h2>@ViewBag.UserIp</h2>
-
+@model MVC_Simple_Calculator.Models.Service.ICalculate<double>
+<h2>IP пользователя @ViewBag.UserIp</h2>
 <div>
     @using (Ajax.BeginForm("ResultCalculateOperation", new AjaxOptions { HttpMethod = "post", OnSuccess = "OnSuccess", OnFailure = "Fail" }))
     {
-       
-        <input type="text" name="operation" value="Что-то"/>
-        <input type="text" name="first" />
-        <input type="text" name="last" />
-        <input type="text" id="result">
-        <input type="submit" value="Рассчитать" />
+        <table class="table">
+            <tr>
+                <th>
+                    Первое значение
+                </th>
+                <th>
+                    Операция
+                </th>
+                <th>
+                    Второе значение значение
+                </th>
+                <th>
+
+                </th>
+                <th>
+                    Результат
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="first_value" name="first" />  
+                </td>
+                <td>
+                    <input type="text" id="operation_id" name="operation" /> 
+                </td>
+                <td>
+                    <input type="text" id="second_value" name="second" /> 
+                </td>
+                <td>
+                    <input type="submit" value="Рассчитать" />
+                </td>
+                <td>
+                    <input type="text" id="result">
+                </td>
+            </tr>
+        </table>
     }
 </div>
-<h2>@ViewBag.Error</h2>
 
+<div>
+    @using (Ajax.BeginForm("CaluclateStoryList", new AjaxOptions { UpdateTargetId = "caluclate_results", HttpMethod = "get" }))
+    {
+            <input type="submit" value="Вернуть стори" />        
+    }
+    <div id="caluclate_results"></div>
+</div>
 <script type="text/javascript">
     function OnSuccess(result) {
         console.log("this result is " + result)
         document.getElementById("result").value = result
     }
-    function Fail(request, error) {
-        console.log("this result is " + error)
+    function Fail(request) {
+        var start_pos = request.responseText.indexOf("<title>")+7
+        var end_pos = request.responseText.indexOf("</title>")-52
+        var text = request.responseText.substr(start_pos, end_pos)
+        alert(text)
     }
 </script>
