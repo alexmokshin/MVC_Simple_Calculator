@@ -18,9 +18,6 @@ namespace MVC_Simple_Calculator.Models.Service.Tests
             /*Division dv = new Division();
             Console.WriteLine(dv.Result(7, 0));
             Console.WriteLine(dv.Result(0.22251546879848654521354987984561568789, 7));*/
-            HomeController controller = new HomeController();
-            object c = controller.ResultCalculateOperation("+", 36, 18);
-            Assert.AreEqual(54, (double)c);
             
             
         }

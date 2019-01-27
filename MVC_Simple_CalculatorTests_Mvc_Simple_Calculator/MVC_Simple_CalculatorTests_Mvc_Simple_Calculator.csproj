@@ -57,6 +57,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Models\DatabaseLayer\Database Access Object\DatabaseServiceTests_DAO_class.cs" />
     <Compile Include="Models\Service\AdditionTests_calculate_class.cs" />
     <Compile Include="Models\Service\DivisionTests_calculate_class.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
