@@ -18,6 +18,10 @@ namespace MVC_Simple_Calculator.Models.Service
             this.A_number = first;
             this.B_number = last;
         }
+        public double Result()
+        {
+            return A_number + B_number;
+        }
         public Addition()
         { }
         
