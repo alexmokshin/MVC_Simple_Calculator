@@ -9,7 +9,7 @@ namespace MVC_Simple_Calculator.Models.Service
     {
         [Required(ErrorMessage ="Данное поле обязательно для заполнения")]
         [DisplayName("Операция")]
-        char Operation_symbol { get; }
+        char Operation_symbol { get; set; }
         [DisplayName("Результат")]
         T Result { get; set; }
         [DisplayName("Первое значение")]

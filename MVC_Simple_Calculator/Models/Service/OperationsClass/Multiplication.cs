@@ -4,7 +4,7 @@ namespace MVC_Simple_Calculator.Models.Service
 {
     public class Multiplication : ICalculate<double>
     {
-        public char Operation_symbol { get; } = '*';
+        public char Operation_symbol { get; set; } = '*';
         public double A_number { get; set; }
         public double B_number { get; set; }
         public double Result { get; set; }
@@ -22,6 +22,8 @@ namespace MVC_Simple_Calculator.Models.Service
             this.A_number = first_number;
             this.B_number = second_number;
         }
+
+        public Multiplication() { }
 
         public double ResultOperation()
         {

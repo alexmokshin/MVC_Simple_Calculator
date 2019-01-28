@@ -7,25 +7,26 @@ using System.Web;
 using System.Web.Mvc;
 using MVC_Simple_Calculator.Models.Service;
 using MVC_Simple_Calculator.Models.Service.UserClass;
+using MVC_Simple_Calculator.Models.DatabaseLayer.Database_Access_Object;
 
 namespace MVC_Simple_Calculator.Controllers
 {
     public class HomeController : Controller
     {
         static List<UserEvents> eventsList;
-       
+        static readonly User user_settings = new User();
+        readonly DatabaseService database = new DatabaseService();
+
         public ActionResult Index()
         {
-
-            var t = FillUserEventsList();
-            ViewBag.UserIP = new User().UserIp;
+            ViewBag.UserIP = user_settings.UserIp;
             return View();
         }
 
         private ICalculate<double> GetCalculateOperationClass(string operation_char, double first, double second)
         {
             ICalculate<double> calc_operation = null;
-            if (Regex.IsMatch(operation_char, "([+,\\-, *,/]{1})"))
+            if (Regex.IsMatch(operation_char, "([+,\\-, *,/]{1})") && first.GetType() == typeof(double) && second.GetType() == typeof(double))
             {
                 
                 {
@@ -50,39 +51,45 @@ namespace MVC_Simple_Calculator.Controllers
             if (calc_operation != null)
                 return calc_operation;
             else
-                throw new Exception("Переменные введены неправильно");
+                throw new Exception("Оператор выбран некорректно. Пожалуйста, выберете +, -, *, /");
             
         }
 
         [HttpPost]
-        public double ResultCalculateOperation(string operation, double first, double second)
+        public object ResultCalculateOperation(string operation, double first, double second)
         {
             ICalculate<double> calc_operation = null;
             double res = 0;
             try
             {
+                
                 calc_operation = GetCalculateOperationClass(operation, first, second);
                 res = calc_operation.ResultOperation();
-                eventsList.Add(new UserEvents(calc_operation));
+                var event_value = new UserEvents(calc_operation);
+                //eventsList.Add(new UserEvents(calc_operation));
+                database.InsertEventIntoDatabase(user_settings.UserIp, event_value.Operation.Operation_symbol, event_value.Operation.A_number, event_value.Operation.B_number, event_value.Operation.Result, event_value.DateTimeOperation);
                 return res;
             }
-            catch (Exception)
+            catch (Exception er)
             {
-                throw;
+                Console.Write(er.Message);
+                return HttpNotFound(er.Message);
             } 
         }
 
-        private List<UserEvents> FillUserEventsList()
+        private List<UserEvents> FillUserEventsList(string user_ip)
         {
-            eventsList = new List<UserEvents>();
+            //DatabaseService database = new DatabaseService();
+            eventsList = database.GetEventsFromDatabase(user_ip);
             return eventsList;
             
         }
         [HttpGet]
         public ActionResult CaluclateStoryList()
         {
+            eventsList = FillUserEventsList(user_settings.UserIp);
             if (eventsList.Count <= 0)
-                return HttpNotFound();
+                return HttpNotFound("Have not any events with this IP");
             else
                 return PartialView(eventsList);
 

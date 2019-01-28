@@ -7,7 +7,7 @@ namespace MVC_Simple_Calculator.Models.Service
         public double A_number { get ; set; }
         public double B_number { get ; set; }
         public double Result { get; set; }
-        public char Operation_symbol { get; } = '-';
+        public char Operation_symbol { get; set; } = '-';
 
         public double ResultOperation(double first_number, double second_number)
         {
@@ -22,6 +22,8 @@ namespace MVC_Simple_Calculator.Models.Service
             this.A_number = first_number;
             this.B_number = last_number;
         }
+
+        public Subtraction() { }
 
         public double ResultOperation()
         {

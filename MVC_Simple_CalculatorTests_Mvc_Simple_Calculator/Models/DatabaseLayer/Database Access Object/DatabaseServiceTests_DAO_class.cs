@@ -15,7 +15,14 @@ namespace MVC_Simple_Calculator.Models.DatabaseLayer.Database_Access_Object.Test
         public void GetEventsFromDatabaseTest_open_connection_result()
         {
             DatabaseService service = new DatabaseService();
-            service.GetEventsFromDatabase();
+            try
+            {
+                var t = service.GetEventsFromDatabase("127.0.0.1");                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

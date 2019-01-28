@@ -5,7 +5,7 @@ namespace MVC_Simple_Calculator.Models.Service
 {
     public class Division : ICalculate<double>
     {
-        public char Operation_symbol { get; } = '/';
+        public char Operation_symbol { get; set; } = '/';
         public double A_number { get; set; }
         public double B_number { get ; set ; }
         public double Result { get; set; }
@@ -16,6 +16,8 @@ namespace MVC_Simple_Calculator.Models.Service
             this.A_number = first;
             this.B_number = last;
         }
+
+        public Division() { }
 
         public double ResultOperation()
         {

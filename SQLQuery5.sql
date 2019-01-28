@@ -1,0 +1,1 @@
+﻿exec dbo.SEL_USERS_EVENTS '127.0.0.1'

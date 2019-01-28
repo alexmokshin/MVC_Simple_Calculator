@@ -18,8 +18,32 @@ namespace MVC_Simple_Calculator.Models.Service
             this.Operation = operation;
             this.DateTimeOperation = operation_time;
         }
-        public UserEvents()
-        { }
+        public UserEvents(char symbol)
+        {
+            ICalculate<double> calculate;
+            switch (symbol)
+            {
+                case '+':
+                    calculate = new Addition();
+                    this.Operation = calculate;
+                    break;
+                case '-':
+                    calculate = new Subtraction();
+                    this.Operation = calculate;
+                    break;
+                case '*':
+                    calculate = new Multiplication();
+                    this.Operation = calculate;
+                    break;
+                case '/':
+                    calculate = new Division();
+                    this.Operation = calculate;
+                    break;
+            }
+
+            
+        }
+        public UserEvents() { }
         public UserEvents(ICalculate<double> calculate)
         {
             var t = new Random();

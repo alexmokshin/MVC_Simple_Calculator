@@ -7,7 +7,7 @@ namespace MVC_Simple_Calculator.Models.Service.UserClass
     public class User
     {
         [DisplayName("IP пользователя")]
-        public string UserIp { get { return GetUserIPAddress(); } set { } }
+        public string UserIp { get; private set; }
 
         public User()
         {
@@ -20,6 +20,11 @@ namespace MVC_Simple_Calculator.Models.Service.UserClass
         public string GetUserIP()
         {
             return UserIp;
+        }
+
+        public void SetUserIp(string user_ip)
+        {
+            this.UserIp = user_ip;
         }
 
         protected string GetUserIPAddress()
