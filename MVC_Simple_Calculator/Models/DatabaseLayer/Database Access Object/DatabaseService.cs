@@ -73,8 +73,8 @@ namespace MVC_Simple_Calculator.Models.DatabaseLayer.Database_Access_Object
         {
             using (SqlConnection conn = CONNECTION)
             {
-            //    try
-            //    {
+                try
+                {
                     conn.Open();
                     SqlCommand insert_command = new SqlCommand("dbo.INS_USER_EVENT", conn);
                     insert_command.CommandType = CommandType.StoredProcedure;
@@ -121,12 +121,11 @@ namespace MVC_Simple_Calculator.Models.DatabaseLayer.Database_Access_Object
                     insert_command.Parameters.Add(result_parameter);
                     insert_command.Parameters.Add(dattim_parameter);
                     int a = insert_command.ExecuteNonQuery();
-                //}
-                //catch(Exception ex)
-                //{
-                //    Console.WriteLine(ex.Message);
-                //    throw;
-                //}
+                }
+                catch(Exception ex)
+                {
+                    throw;
+                }
             }
 
 

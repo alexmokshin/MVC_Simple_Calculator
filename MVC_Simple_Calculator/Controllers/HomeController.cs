@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.Mvc;
 using MVC_Simple_Calculator.Models.Service;
 using MVC_Simple_Calculator.Models.Service.UserClass;
@@ -77,10 +74,8 @@ namespace MVC_Simple_Calculator.Controllers
 
         private List<UserEvents> FillUserEventsList(string user_ip)
         {
-            //DatabaseService database = new DatabaseService();
             eventsList = database.GetEventsFromDatabase(user_ip);
             return eventsList;
-            
         }
         [HttpGet]
         public ActionResult CaluclateStoryList()
