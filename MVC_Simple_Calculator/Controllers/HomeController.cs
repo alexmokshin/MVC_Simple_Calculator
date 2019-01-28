@@ -66,14 +66,12 @@ namespace MVC_Simple_Calculator.Controllers
                 calc_operation = GetCalculateOperationClass(operation, first, second);
                 res = calc_operation.ResultOperation();
                 var event_value = new UserEvents(calc_operation);
-                //eventsList.Add(new UserEvents(calc_operation));
                 database.InsertEventIntoDatabase(user_settings.UserIp, event_value.Operation.Operation_symbol, event_value.Operation.A_number, event_value.Operation.B_number, event_value.Operation.Result, event_value.DateTimeOperation);
                 return res;
             }
             catch (Exception er)
-            {
-                Console.Write(er.Message);
-                return HttpNotFound(er.Message);
+            {        
+               return HttpNotFound(er.Message);
             } 
         }
 
