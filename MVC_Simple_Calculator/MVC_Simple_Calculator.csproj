@@ -146,7 +146,6 @@
     <Content Include="App_Data\CalculatorDataStorage_log.ldf">
       <DependentUpon>CalculatorDataStorage.mdf</DependentUpon>
     </Content>
-    <Content Include="CalculatorDataStorage.mdf" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
