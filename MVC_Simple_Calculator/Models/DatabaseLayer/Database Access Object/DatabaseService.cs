@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using MVC_Simple_Calculator.Models.DatabaseLayer.DatabaseConnection;
-using System.Data.Sql;
 using MVC_Simple_Calculator.Models.Service;
 using System.Data.SqlClient;
 using System.Data;
@@ -64,8 +61,6 @@ namespace MVC_Simple_Calculator.Models.DatabaseLayer.Database_Access_Object
                 {
                     throw;
                 }
-                
-
             }
         }
 

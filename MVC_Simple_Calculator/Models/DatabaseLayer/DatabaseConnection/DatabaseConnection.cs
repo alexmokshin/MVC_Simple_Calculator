@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 using System.Data.SqlClient;
 
 namespace MVC_Simple_Calculator.Models.DatabaseLayer.DatabaseConnection
