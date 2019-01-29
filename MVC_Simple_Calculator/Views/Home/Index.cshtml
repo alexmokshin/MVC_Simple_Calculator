@@ -26,13 +26,13 @@
             </tr>
             <tr>
                 <td>
-                    <input type="number" id="first_value" name="first" size="16" step="0.1"/>  
+                    <input type="number" id="first_value" name="first" size="16"/>  
                 </td>
                 <td>
                     <input type="text" id="operation_id" name="operation" /> 
                 </td>
                 <td>
-                    <input type="number" id="second_value" name="second" size="16" step="0.1"/> 
+                    <input type="number" id="second_value" name="second" size="16"/> 
                 </td>
                 <td>
                     <input type="submit" onclick="CheckInputValue"value="Рассчитать" />
@@ -48,7 +48,7 @@
 <div>
     @using (Ajax.BeginForm("CaluclateStoryList", new AjaxOptions { UpdateTargetId = "caluclate_results", HttpMethod = "get", OnFailure = "FailList" }))
     {
-            <input type="submit" value="Вернуть стори" />        
+            <input type="submit" value="Показать историю расчетов" />        
     }
     <div id="caluclate_results"></div>
 </div>
@@ -67,15 +67,5 @@
         console.log(error)
         console.log(huita)
     }
-    function CheckInputValue() {
-        var a_num, b_num;
-        a_num = document.getElementById("first_value").value;
-        b_num = document.getElementById("second_value").value;
-        if (isNaN(a_num) && isNaN(b_num)) {
-            alert("Введены некорректные значения");
-        }
-        else {
-            
-        }
-    }
+    
 </script>
