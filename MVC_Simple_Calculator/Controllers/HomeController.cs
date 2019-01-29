@@ -74,7 +74,7 @@ namespace MVC_Simple_Calculator.Controllers
                 
 
 
-               return HttpNotFound(er.Message);
+               return HttpNotFound(er.Message.ToString());
             } 
         }
 

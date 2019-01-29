@@ -117,7 +117,7 @@ namespace MVC_Simple_Calculator.Models.DatabaseLayer.Database_Access_Object
                     insert_command.Parameters.Add(dattim_parameter);
                     int a = insert_command.ExecuteNonQuery();
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     throw;
                 }
