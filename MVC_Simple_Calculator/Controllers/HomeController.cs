@@ -69,12 +69,7 @@ namespace MVC_Simple_Calculator.Controllers
             }
             catch (Exception er)
             {
-                var utf8 = new UTF8Encoding();
-                var error_byte = utf8.GetBytes(er.Message);
-                
-
-
-               return HttpNotFound(er.Message.ToString());
+               return HttpNotFound(er.Message);
             } 
         }
 
