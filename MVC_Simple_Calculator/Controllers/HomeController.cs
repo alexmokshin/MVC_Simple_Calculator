@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using MVC_Simple_Calculator.Models.Service;
 using MVC_Simple_Calculator.Models.Service.UserClass;
 using MVC_Simple_Calculator.Models.DatabaseLayer.Database_Access_Object;
+using System.Text;
 
 namespace MVC_Simple_Calculator.Controllers
 {
@@ -67,7 +68,12 @@ namespace MVC_Simple_Calculator.Controllers
                 return res;
             }
             catch (Exception er)
-            {        
+            {
+                var utf8 = new UTF8Encoding();
+                var error_byte = utf8.GetBytes(er.Message);
+                
+
+
                return HttpNotFound(er.Message);
             } 
         }
@@ -102,11 +108,5 @@ namespace MVC_Simple_Calculator.Controllers
             });
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
