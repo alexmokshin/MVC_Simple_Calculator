@@ -71,55 +71,60 @@ namespace MVC_Simple_Calculator.Models.DatabaseLayer.Database_Access_Object
                 try
                 {
                     conn.Open();
-                    SqlCommand insert_command = new SqlCommand("dbo.INS_USER_EVENT", conn);
-                    insert_command.CommandType = CommandType.StoredProcedure;
-                    SqlParameter user_name_parameter = new SqlParameter
+                    if (conn.State == ConnectionState.Open)
                     {
-                        ParameterName = "@user_name",
-                        Value = user_name,
-                        SqlDbType = SqlDbType.VarChar
-                    };
-                    SqlParameter operation_char_parameter = new SqlParameter
-                    {
-                        ParameterName = "@operation_char",
-                        Value = operation_char,
-                        SqlDbType = SqlDbType.Char
-                    };
-                    SqlParameter a_number_parameter = new SqlParameter
-                    {
-                        ParameterName = "@a_number",
-                        Value = a_number,
-                        SqlDbType = SqlDbType.Decimal
-                    };
-                    SqlParameter b_number_parameter = new SqlParameter
-                    {
-                        ParameterName = "@b_number",
-                        Value = b_number,
-                        SqlDbType = SqlDbType.Decimal
-                    };
-                    SqlParameter result_parameter = new SqlParameter
-                    {
-                        ParameterName = "@result",
-                        Value = result,
-                        SqlDbType = SqlDbType.Decimal
-                    };
-                    SqlParameter dattim_parameter = new SqlParameter
-                    {
-                        ParameterName = "@dattim",
-                        Value = dattim,
-                        SqlDbType = SqlDbType.DateTime2
-                    };
-                    insert_command.Parameters.Add(user_name_parameter);
-                    insert_command.Parameters.Add(operation_char_parameter);
-                    insert_command.Parameters.Add(a_number_parameter);
-                    insert_command.Parameters.Add(b_number_parameter);
-                    insert_command.Parameters.Add(result_parameter);
-                    insert_command.Parameters.Add(dattim_parameter);
-                    int a = insert_command.ExecuteNonQuery();
+                        SqlCommand insert_command = new SqlCommand("dbo.INS_USER_EVENT", conn);
+                        insert_command.CommandType = CommandType.StoredProcedure;
+                        SqlParameter user_name_parameter = new SqlParameter
+                        {
+                            ParameterName = "@user_name",
+                            Value = user_name,
+                            SqlDbType = SqlDbType.VarChar
+                        };
+                        SqlParameter operation_char_parameter = new SqlParameter
+                        {
+                            ParameterName = "@operation_char",
+                            Value = operation_char,
+                            SqlDbType = SqlDbType.Char
+                        };
+                        SqlParameter a_number_parameter = new SqlParameter
+                        {
+                            ParameterName = "@a_number",
+                            Value = a_number,
+                            SqlDbType = SqlDbType.Decimal
+                        };
+                        SqlParameter b_number_parameter = new SqlParameter
+                        {
+                            ParameterName = "@b_number",
+                            Value = b_number,
+                            SqlDbType = SqlDbType.Decimal
+                        };
+                        SqlParameter result_parameter = new SqlParameter
+                        {
+                            ParameterName = "@result",
+                            Value = result,
+                            SqlDbType = SqlDbType.Decimal
+                        };
+                        SqlParameter dattim_parameter = new SqlParameter
+                        {
+                            ParameterName = "@dattim",
+                            Value = dattim,
+                            SqlDbType = SqlDbType.DateTime2
+                        };
+                        insert_command.Parameters.Add(user_name_parameter);
+                        insert_command.Parameters.Add(operation_char_parameter);
+                        insert_command.Parameters.Add(a_number_parameter);
+                        insert_command.Parameters.Add(b_number_parameter);
+                        insert_command.Parameters.Add(result_parameter);
+                        insert_command.Parameters.Add(dattim_parameter);
+                        int a = insert_command.ExecuteNonQuery();
+                    }
+                    else
+                        throw new Exception("Error to connect to database. Please, check settings file");
                 }
-                catch(Exception)
+                catch(Exception er)
                 {
-                    throw;
+                    throw new Exception(er.Message);
                 }
             }
 
