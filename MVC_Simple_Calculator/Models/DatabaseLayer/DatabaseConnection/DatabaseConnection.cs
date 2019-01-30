@@ -41,7 +41,7 @@ namespace MVC_Simple_Calculator.Models.DatabaseLayer.DatabaseConnection
             connection.IntegratedSecurity = IntegratedSecurity;
             connection.UserID = UserID;
             connection.Password = Password;
-            connection.AttachDBFilename = AppDomain.CurrentDomain.BaseDirectory + @AttachDBFilename;
+            connection.AttachDBFilename = String.Concat(AppDomain.CurrentDomain.BaseDirectory,@AttachDBFilename);
             return new SqlConnection(connection.ConnectionString);
             
         }
