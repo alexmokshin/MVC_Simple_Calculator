@@ -51,7 +51,7 @@ namespace MVC_Simple_Calculator.Models.DatabaseLayer.Database_Access_Object
                         return list_events;
                     }
                     else
-                        throw new Exception("В базе нет событий с данным IP "+user_ip);
+                        throw new Exception("In database have not any events with IP "+user_ip);
                 }
                 catch (SqlException ex)
                 {

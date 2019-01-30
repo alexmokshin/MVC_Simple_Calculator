@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MVC_Simple_Calculator.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Database" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">(localdb)\v11.0</Value>
+    </Setting>
+    <Setting Name="UserId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">admin_test</Value>
+    </Setting>
+    <Setting Name="IntegratedSecurity" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ab123456</Value>
+    </Setting>
+    <Setting Name="AttachDBFilename" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">App_Data\CalculatorDataStorage.mdf</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
