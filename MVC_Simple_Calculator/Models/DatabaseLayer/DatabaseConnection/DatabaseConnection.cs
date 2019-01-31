@@ -38,6 +38,7 @@ namespace MVC_Simple_Calculator.Models.DatabaseLayer.DatabaseConnection
         {
             GetCredentialFromResources();
             connection.DataSource = @DataSource;
+            connection.ConnectTimeout = 5;
             connection.IntegratedSecurity = IntegratedSecurity;
             connection.UserID = UserID;
             connection.Password = Password;

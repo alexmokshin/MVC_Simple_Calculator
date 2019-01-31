@@ -12,8 +12,8 @@ namespace MVC_Simple_Calculator.Controllers
     public class HomeController : Controller
     {
         static List<UserEvents> eventsList;
-        static readonly User user_settings = new User();
-        readonly DatabaseService database = new DatabaseService();
+        static User user_settings = new User();
+        static DatabaseService database = new DatabaseService();
 
         public ActionResult Index()
         {
@@ -49,11 +49,11 @@ namespace MVC_Simple_Calculator.Controllers
             if (calc_operation != null)
                 return calc_operation;
             else
-                throw new Exception("Оператор выбран некорректно. Пожалуйста, выберите +, -, *, ?");
+                throw new Exception("Operator type incorrectly. Please type +, -, *,?");
         }
 
         [HttpPost]
-        public object ResultCalculateOperation(string operation, double first, double second)
+        public ActionResult ResultCalculateOperation(string operation, double first, double second)
         {
             ICalculate<double> calc_operation = null;
             double res = 0;
@@ -64,11 +64,11 @@ namespace MVC_Simple_Calculator.Controllers
                 res = calc_operation.ResultOperation();
                 var event_value = new UserEvents(calc_operation);
                 database.InsertEventIntoDatabase(user_settings.UserIp, event_value.Operation.Operation_symbol, event_value.Operation.A_number, event_value.Operation.B_number, event_value.Operation.Result, event_value.DateTimeOperation);
-                return res;
+                return Content(res.ToString());
             }
             catch (Exception er)
             {
-               return HttpNotFound(er.Message);
+                return new HttpNotFoundResult(er.Message);
             } 
         }
 
