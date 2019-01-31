@@ -49,8 +49,7 @@ namespace MVC_Simple_Calculator.Controllers
             if (calc_operation != null)
                 return calc_operation;
             else
-                throw new Exception("Operator selected incorrectly. Please select +, -, *, /");
-            
+                throw new Exception("Оператор выбран некорректно. Пожалуйста, выберите +, -, *, ?");
         }
 
         [HttpPost]
