@@ -8,11 +8,11 @@ namespace MVC_Simple_Calculator.Models.DatabaseLayer.Database_Access_Object
 {
     public class DatabaseService
     {   
-        private SqlConnection CONNECTION { get; set; }
+        private static SqlConnection CONNECTION { get; set; }
 
         public DatabaseService()
         {
-            this.CONNECTION = DatabaseConnection.DatabaseConnection.ConnectionDatabase();
+            CONNECTION = DatabaseConnection.DatabaseConnection.ConnectionDatabase();
         }
 
         public List<UserEvents> GetEventsFromDatabase(string user_ip)
